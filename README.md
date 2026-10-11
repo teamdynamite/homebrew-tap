@@ -29,7 +29,7 @@ brew "teamdynamite/tap/git-as", trusted: true
 The example uses `git-as` and version `0.2.0`.
 
 1. Tag and push the release in the `git-as` repository: `git tag -a v0.2.0 -m v0.2.0 && git push origin v0.2.0`.
-2. Open a pull request on this tap that updates `url` and `sha256`: `brew bump-formula-pr --no-fork --url=https://github.com/teamdynamite/git-as/archive/refs/tags/v0.2.0.tar.gz teamdynamite/tap/git-as`. The command downloads the tarball, computes the sha256, pushes a branch to this repository, and opens the pull request. It works on the tap that `brew tap teamdynamite/tap` cloned from GitHub, and it needs GitHub credentials (`gh auth login` or `HOMEBREW_GITHUB_API_TOKEN`).
+2. Get a pull request on this tap that updates `url` and `sha256`. The `brew bump` workflow (`autobump.yml`) checks once a day and opens it automatically for the formulae listed in `.github/autobump.txt`. GitHub does not run the checks on a pull request that the workflow opened, so close and reopen the pull request to start them. To open the pull request yourself instead: `brew bump-formula-pr --no-fork --url=https://github.com/teamdynamite/git-as/archive/refs/tags/v0.2.0.tar.gz teamdynamite/tap/git-as`. The command downloads the tarball, computes the sha256, pushes a branch to this repository, and opens the pull request. It works on the tap that `brew tap teamdynamite/tap` cloned from GitHub, and it needs GitHub credentials (`gh auth login` or `HOMEBREW_GITHUB_API_TOKEN`).
 3. Wait for the `brew test-bot` checks on the pull request to pass. They build and test the bottles.
 4. Publish: in the Actions tab, select the `brew pr-pull` workflow, click "Run workflow", and enter the pull request number. The workflow uploads the bottles to a GitHub Release, adds the `bottle do` block, and pushes the commits to `main`. The pull request then closes automatically.
 
@@ -38,7 +38,7 @@ The example uses `git-as` and version `0.2.0`.
 
 ## Adding a formula
 
-Add `Formula/<name>.rb` in a pull request, check it locally with `brew audit --strict --online --new teamdynamite/tap/<name>` and `brew style teamdynamite/tap`, then publish it with the `brew pr-pull` workflow as in step 4 above.
+Add `Formula/<name>.rb` in a pull request, check it locally with `brew audit --strict --online --new teamdynamite/tap/<name>` and `brew style teamdynamite/tap`, then publish it with the `brew pr-pull` workflow as in step 4 above. To bump it automatically, add its name to `.github/autobump.txt`.
 
 ## Documentation
 
