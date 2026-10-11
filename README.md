@@ -43,3 +43,7 @@ Add `Formula/<name>.rb` in a pull request, check it locally with `brew audit --s
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+
+## License
+
+This tap is released into the public domain under the [Unlicense](LICENSE). You can use it for any purpose, with no restrictions.
