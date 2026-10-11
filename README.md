@@ -1,4 +1,4 @@
-# Teamdynamite Tap
+# teamdynamite/homebrew-tap
 
 A [Homebrew](https://brew.sh) tap for tools by teamdynamite. Formulae build from source, and CI publishes prebuilt bottles, so most users do not need a compiler.
 
