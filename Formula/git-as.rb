@@ -6,6 +6,12 @@ class GitAs < Formula
   license "Unlicense"
   head "https://github.com/teamdynamite/git-as.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/teamdynamite/homebrew-tap/releases/download/git-as-0.1.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "d82598b6894725e13afd2a598050abd785b48d377db92085ea15a63bce7a647d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "ff601002d25222964296c3e7cfd8dcdb342753966422c0c92ee71d318e2a8894"
+  end
+
   depends_on "go" => :build
 
   def install
